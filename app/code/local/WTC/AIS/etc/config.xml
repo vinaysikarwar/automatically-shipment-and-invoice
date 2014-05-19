@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <WTC_AIS>
+      <version>0.1.0</version>
+    </WTC_AIS>
+  </modules>
+  <global>
+    <helpers>
+      <ais>
+        <class>WTC_AIS_Helper</class>
+      </ais>
+    </helpers>
+	<models>
+	  <ais>
+		<class>WTC_AIS_Model</class>
+		<resourceModel>ais_mysql4</resourceModel>
+	  </ais>
+	</models>
+    <events>
+		<sales_order_save_after>
+            <observers>
+                <wtc_invoicer_automatically_complete_order>
+                    <class>wtc_ais/observer</class>
+                    <method>automaticallyInvoiceShipCompleteOrder</method>
+                </wtc_invoicer_automatically_complete_order>
+            </observers>
+        </sales_order_save_after>
+    </events>
+  </global>
+</config> 
